@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.finleap.user.resp.ResponseToClient.listToClient;
 import static com.finleap.user.resp.ResponseToClient.objectToClient;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -37,11 +38,10 @@ public class UserController {
      *
      * @return the all user
      */
-    @Async
     @RequestMapping(value = "/getAllUser", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> getAllUser() {
         logger.info("getAllUser................");
-        return userService.getAllUser().thenApply(user -> objectToClient(user)).toCompletableFuture();
+        return userService.getAllUser().thenApply(user -> listToClient(user)).toCompletableFuture();
     }
 
     /**
@@ -50,7 +50,6 @@ public class UserController {
      * @param id the id
      * @return the user by id
      */
-    @Async
     @RequestMapping(value = "/getUserById", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> getUserById(@RequestParam int id) {
         logger.info("getUserById................");
@@ -63,7 +62,6 @@ public class UserController {
      * @param user the user
      * @return the completable future
      */
-    @Async
     @RequestMapping(value = "/saveUser", method = POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> save(@RequestBody User user) {
         logger.info("save................");

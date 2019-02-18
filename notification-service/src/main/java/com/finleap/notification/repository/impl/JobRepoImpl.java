@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 /**
@@ -25,6 +26,8 @@ import java.util.List;
 public class JobRepoImpl implements JobRepo {
 
     private static final String JOB_BY_SCHEDULE_ID = "SELECT * FROM JOB WHERE SCHEDULE_ID = :scheduleId";
+
+    private static final String UPDATE_JOB_QUEUE = "UPDATE JOB_QUEUE SET STATUS = ? WHERE id = ?";
 
     /**
      * The Named parameter jdbc template.
@@ -63,8 +66,23 @@ public class JobRepoImpl implements JobRepo {
     @Override
     public JobQueue getJobQueue() {
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("status", "NEW");
-        List<JobQueue> jobQueues = namedParameterJdbcTemplate.query("SELECT * FROM job_queue where STATUS = :status", namedParameters, new JobQueueRowMapper());
-        return jobQueues != null && !jobQueues.isEmpty() ? jobQueues.get(0) : null;
+        List<JobQueue> jobQueuesList = namedParameterJdbcTemplate.query("SELECT * FROM job_queue where STATUS = :status", namedParameters, new JobQueueRowMapper());
+        JobQueue jobQueues = jobQueuesList != null && !jobQueuesList.isEmpty() ? jobQueuesList.get(0) : null;
+        if(jobQueues!=null){
+            updateJobQueue("INPROGRESS", jobQueues.getId());
+        }
+        return jobQueues;
+    }
+
+    @Override
+    public void updateJobQueue(String status, String jobQueueId) {
+        // define query arguments
+        Object[] params = {status, jobQueueId};
+        // define SQL types of the arguments
+        int[] types = {Types.VARCHAR, Types.BIGINT};
+        int rows = jdbcTemplate.update(UPDATE_JOB_QUEUE, params, types);
+        System.out.println(rows + " row(s) updated.");
+
     }
 
     /**

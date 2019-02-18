@@ -5,13 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * Encapsulates the information about user's situation.
  */
 @Entity
 @Table(name = "Template")
-public class Template {
+public class Template implements Serializable {
 
     @Id
     @Column(name = "Id")

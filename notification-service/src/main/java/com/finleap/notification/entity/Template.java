@@ -1,10 +1,12 @@
 package com.finleap.notification.entity;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates the information about user's situation.
  */
 
-public class Template {
+public class Template implements Serializable {
 
     private String id;
 

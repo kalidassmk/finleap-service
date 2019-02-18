@@ -9,7 +9,7 @@ public abstract class AbstractJobWorker {
 
     public abstract void execute(NotificationTemplate notificationTemplate);
 
-    public abstract void updateStatus(NotificationTemplate notificationTemplate);
+    public abstract void updateStatus(String jobQueueId);
 
     public abstract void sendEmail(NotificationTemplate notificationTemplate);
 

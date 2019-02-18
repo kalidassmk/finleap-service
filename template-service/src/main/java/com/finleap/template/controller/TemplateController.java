@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.finleap.template.resp.ResponseToClient.listToClient;
+import static com.finleap.template.resp.ResponseToClient.objectToClient;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 /**
  * com.finleap.template.controller
  *
@@ -35,11 +39,10 @@ public class TemplateController {
      * @param ids the ids
      * @return the template by id
      */
-    @Async
-    @RequestMapping(value = "/getTemplateById", method = RequestMethod.GET)
+    @RequestMapping(value = "/getTemplateById", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> getTemplateById(@RequestParam String ids) {
         logger.info("getTemplateById................");
-        return templateService.getTemplateById(ids).thenApply(user -> ResponseToClient.objectToClient(user)).toCompletableFuture();
+        return templateService.getTemplateById(ids).thenApply(template -> listToClient(template)).toCompletableFuture();
     }
 
     /**
@@ -48,18 +51,16 @@ public class TemplateController {
      * @param templateKey the template key
      * @return the template by key
      */
-    @Async
-    @RequestMapping(value = "/getTemplateByKey", method = RequestMethod.GET)
+    @RequestMapping(value = "/getTemplateByKey", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> getTemplateByKey(@RequestParam String templateKey) {
         logger.info("getTemplateByKey................");
-        return templateService.getTemplateByKey(templateKey).thenApply(user -> ResponseToClient.objectToClient(user)).toCompletableFuture();
+        return templateService.getTemplateByKey(templateKey).thenApply(template -> listToClient(template)).toCompletableFuture();
     }
 
-    @Async
-    @RequestMapping(value = "/getAllTemplate", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllTemplate", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public CompletableFuture<JsonNode> getAllTemplate() {
         logger.info("getTemplateById................");
-        return templateService.getAllTemplate().thenApply(user -> ResponseToClient.objectToClient(user)).toCompletableFuture();
+        return templateService.getAllTemplate().thenApply(template -> listToClient(template)).toCompletableFuture();
     }
 
 
