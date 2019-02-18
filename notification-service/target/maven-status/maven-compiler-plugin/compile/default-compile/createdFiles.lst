@@ -1,0 +1,4 @@
+com\finleap\notification\resp\Response.class
+com\finleap\notification\resp\Status.class
+com\finleap\notification\entity\Job.class
+com\finleap\notification\resp\ErrorMessage.class
