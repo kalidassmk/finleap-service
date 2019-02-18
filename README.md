@@ -10,7 +10,7 @@ Folder **src/resources/** contains config files for **notification-service** Spr
 
 There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker.
 
-Once the app starts, go to the web browser and visit `http://localhost:9001/`
+Once the app starts, go to the web browser and visit `http://localhost:9004/`
 
 ### Maven
 
