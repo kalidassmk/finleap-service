@@ -1,16 +1,22 @@
 package com.finleap.notification.worker;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finleap.notification.entity.JobQueue;
 import com.finleap.notification.entity.NotificationTemplate;
+import com.finleap.notification.entity.Template;
 import com.finleap.notification.entity.User;
 import com.finleap.notification.mail.EmailService;
 import com.finleap.notification.repository.JobRepo;
-import com.finleap.notification.resp.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -81,80 +87,104 @@ public class JobWorker extends AbstractJobWorker {
     }
 
 
-    public Response getAllUserData() {
-        StringBuffer userService = new StringBuffer();
-        userService.append(userServiceProtocol)
-                .append("://").append(userServiceURL)
-                .append(":").append(userServicePort).append("/")
-                .append("user-service").append("/").append("getAllUser");
-        Response json = restTemplate.getForObject(userService.toString(), Response.class);
-        return json;
+    public List<User> getAllUserData() {
+        try {
+            StringBuffer userService = new StringBuffer();
+            userService.append(userServiceProtocol)
+                    .append("://").append(userServiceURL)
+                    .append(":").append(userServicePort).append("/")
+                    .append("user-service").append("/").append("getAllUser");
+
+            ResponseEntity<String> response = restTemplate.getForEntity(userService.toString(), String.class);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(response.getBody());
+            JsonNode payLoad = root.path("payLoad");
+            List<User> userList = new ObjectMapper().readValue(payLoad.toString(), new TypeReference<List<User>>() {});
+
+            return userList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
+    public List<Template> getAllTemplate() {
+        try {
+            StringBuffer templateService = new StringBuffer();
+            templateService.append(templateServiceProtocol)
+                    .append("://").append(templateServiceURL)
+                    .append(":").append(templateServicePort)
+                    .append("template-service").append("/")
+                    .append("getAllTemplate");
 
-    public Response getAllTemplate() {
-        StringBuffer templateService = new StringBuffer();
-        templateService.append(templateServiceProtocol)
-                .append("://").append(templateServiceURL)
-                .append(":").append(templateServicePort)
-                .append("template-service").append("/")
-                .append("getAllTemplate");
-        return restTemplate.getForObject(templateService.toString(), Response.class);
+            ResponseEntity<String> response = restTemplate.getForEntity(templateService.toString(), String.class);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(response.getBody());
+            JsonNode payLoad = root.path("payLoad");
+            List<Template> templateList = new ObjectMapper().readValue(payLoad.toString(), new TypeReference<List<Template>>() {});
+            return templateList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
-    public Response getTemplateByKey(String key) {
-        StringBuffer templateService = new StringBuffer();
-        templateService.append(templateServiceProtocol)
-                .append("://").append(templateServiceURL)
-                .append(":").append(templateServicePort)
-                .append("template-service").append("/")
-                .append("getTemplateByKey").append("?templateKey=").append(key);
+    public List<Template> getTemplateByKey(String key) {
+        try {
+            StringBuffer templateService = new StringBuffer();
+            templateService.append(templateServiceProtocol)
+                    .append("://").append(templateServiceURL)
+                    .append(":").append(templateServicePort)
+                    .append("template-service").append("/")
+                    .append("getTemplateByKey").append("?templateKey=").append(key);
 
-        Response json = restTemplate.getForObject(templateService.toString(), Response.class);
-        return json;
+            ResponseEntity<String> response = restTemplate.getForEntity(templateService.toString(), String.class);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(response.getBody());
+            JsonNode payLoad = root.path("payLoad");
+            List<Template> templateList = new ObjectMapper().readValue(payLoad.toString(), new TypeReference<List<Template>>() {});
+            return templateList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
-    public Response getTemplateById() {
+    public List<Template> getTemplateById() {
         return null;
     }
 
     public User enrichBody(User user, String body) {
-
+        body = body.replaceAll("}","");
+        body =  body.replaceAll("\\{","");
         body = replaceUserSalutation(getUserSalutation(user.getGender()), body);
         body = replaceUserName(user.getFirst_name() + " " + user.getSureName(), body);
         body = replaceUserIdentifier(user.getEmail(), body);
         body = replaceApostrophe(body);
-
-
         user.setBody(body);
         return user;
     }
 
     public String replaceUserSalutation(String salutation, String body) {
-        Pattern pattern = Pattern.compile(body);
-        Matcher matcher = pattern.matcher(userSalutationRegex);
-        body = matcher.replaceAll(salutation);
+        body = body.replaceAll(userSalutationRegex, salutation);
         return body;
     }
 
     public String replaceUserName(String userName, String body) {
-        Pattern pattern = Pattern.compile(body);
-        Matcher matcher = pattern.matcher(userNameRegex);
-        body = matcher.replaceAll(userName);
+        body = body.replaceAll(userNameRegex, userName);
         return body;
     }
 
     public String replaceUserIdentifier(String userIdentifier, String body) {
-        Pattern pattern = Pattern.compile(body);
-        Matcher matcher = pattern.matcher(userIdentifierRegex);
-        body = matcher.replaceAll(userIdentifier);
+        body = body.replaceAll(userIdentifierRegex, userIdentifier);
         return body;
     }
 
     public String replaceApostrophe(String body) {
-        Pattern pattern = Pattern.compile(body);
-        Matcher matcher = pattern.matcher(apostrophe);
-        body = matcher.replaceAll("'");
+        body = body.replaceAll(userIdentifierRegex, "'");
         return body;
     }
 

@@ -22,24 +22,21 @@ public class SubscribedNotificationJob extends JobWorker {
 
     @Override
     public void execute(NotificationTemplate notificationTemplate) {
-        Response userData = getAllUserData();
-   //     System.out.println("allUserData.toString() = " + userData.toString());
-        Response templateData = getTemplateByKey("SubscribedUserTemplate");
-    //    Response templateData = getAllTemplate();
-        System.out.println("template.toString() = " + templateData.toString());
-        enrichData(notificationTemplate, userData, templateData);
+        List<User> allUserData = getAllUserData();
+        System.out.println("allUserData.toString() = " + allUserData.toString());
+        List<Template> templateData = getTemplateByKey("SubscribedUserTemplate");
+        System.out.println("templateData.toString() = " + templateData.toString());
+        enrichData(notificationTemplate, allUserData, templateData);
     }
 
-    private void enrichData(NotificationTemplate notificationTemplate, Response userData, Response templateData) {
-        List<User> userList = (List<User>) userData.getPayLoad();
-        List<Template> templatelist = (List<Template>) templateData.getPayLoad();
-        Template template = templatelist.get(0);
+    private void enrichData(NotificationTemplate notificationTemplate, List<User> userData, List<Template> templateData) {
+        Template template = templateData.get(0);
         String body = template.getBody();
-        userList = userList.stream()
+        userData = userData.stream()
                 .filter(user -> user.getSubscribedNewsletter())
                 .map(user -> enrichBody(user, body))
                 .collect(Collectors.toList());
-        notificationTemplate.setUserList(userList);
+        notificationTemplate.setUserList(userData);
         notificationTemplate.setTemplate(template);
     }
 
