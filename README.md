@@ -27,9 +27,9 @@
 ----------------------------------------------------------------------------------------
 # How to run the FinLeap services
 
-  Step 1: start the user service and template service.
+  Step 1: start the user service and template service. Please refer the below startup section
 
-  Step 2: Configure the schedulers in the src/resource/data.sql file
+  Step 2: Configure the schedulers in the finleap-service\notification-service\src\main\resources\data.sql file
 
     -- dailyScheduler for Subscribed News Letter notification, it will run based on the frequency=daily  and time= 23:05 GMT time stamp
        it will run on daily 11.05 pm in GMT, we can adjust scheduler based on time column in scheduler table.
@@ -46,8 +46,8 @@
   Step 3: Start the notification service
 
   Step 4: Start the Scheduler
-      Triggered URL  : http://localhost:9004/startScheduler
-      Job Queue - It will start automatically while application startup
+      * Triggered URL  : http://localhost:9004/startScheduler.
+      * Job Queue - It will start automatically while application startup.
 
 -----------------------------------------------------------------------------------------
 
