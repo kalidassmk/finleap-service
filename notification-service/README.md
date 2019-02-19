@@ -212,7 +212,19 @@ Maven Quick start
 **Local:** `notification-service>mvnw spring-boot:run`
 
 
-Job Scheduler
-------------------
+#Technical Implementation
+------------------------
+
+# Actor
+---------
+### com.finleap.notification.actor.SchedulerActor
+
+### com.finleap.notification.actor.JobActor
+
+### com.finleap.notification.actor.JobQueueActor
+
+
+
+
 
 
