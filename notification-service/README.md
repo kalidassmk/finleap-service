@@ -219,7 +219,7 @@ Maven Quick start
 # Actor
 ---------
 ### com.finleap.notification.actor.SchedulerActor
- --- It will run based on the frequency and will create the job queue
+ --- Get the Job details based on the Schedule id and create the job queue
 
 ### com.finleap.notification.actor.JobQueueActor
 --- Get the job queue and trigger the Job Actor.
