@@ -42,10 +42,17 @@ It is possible to run **template-service** using Docker:
 
 2) Run Docker container: `template-service> docker run -p 9003:9003 template-service`
 
+### Service Configuration details
+
 * template-service
     * hostname: template-service
     * Ports: 9003:9003
     * URL: http://localhost:9003
+
+--------------------------------------------------
+
+### template-service DataBase Configuration details
+
 
 * H2 template-service DB:
      * dbName: templatedb

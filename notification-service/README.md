@@ -42,10 +42,20 @@ It is possible to run **notification-service** using Docker:
 
 2) Run Docker container: `notification-service> docker run -p 9004:9004 notification-service`
 
+-----------------------------------------------------------------
+
+### Service Configuration details
+
 * notification-service
     * hostname: notification-service
     * Ports: 9004:9004
     * URL: http://localhost:9004
+
+--------------------------------------------------------------
+
+
+### notification-service DataBase Configuration details
+
 
 * H2 notification-service DB:
      * dbName: notificationdb
