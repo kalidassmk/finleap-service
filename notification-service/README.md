@@ -219,14 +219,13 @@ Maven Quick start
 # Actor
 ---------
 ### com.finleap.notification.actor.SchedulerActor
- --- Get the Job details based on the Schedule id and create the job queue
+ --- Get the Job details from Job table based on the Schedule id and create the job queue
 
 ### com.finleap.notification.actor.JobQueueActor
---- Get the job queue and trigger the Job Actor.
+--- Get the job queue from Job_Queue tables based on the status and trigger the Job Actor.
 
 ### com.finleap.notification.actor.JobActor
---- Get the Job Queue details and assign the job to job worker
-
+--- Receive the Job Queue message from JobQueue Actor and assign the job to job worker
 
 -----------------------------------------------
 
