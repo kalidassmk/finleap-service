@@ -1,5 +1,5 @@
-### notification-service challenge: Multi API notification service
-   # Notification-Service can be triggered in two use-cases:
+# notification-service challenge: Multi API notification service
+   ### Notification-Service can be triggered in two use-cases:
       # use-case one: assume a new user is created
         * user data is loaded by user-service
         * welcome template is loaded by template service and enriched with user-data
