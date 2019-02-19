@@ -1,4 +1,4 @@
-# notification-service challenge: Multi API notification service
+# Multi API notification service challenge:
    ### Notification-Service can be triggered in two use-cases:
       # use-case one: assume a new user is created
         * user data is loaded by user-service
@@ -14,15 +14,14 @@
     Folder **src/resources/** contains data.sql files for Database tables details and information .
 
 ----------------------------------------------------------------------------------------------------
-  ### Database Tables :
-
-       1) scheduler
+  # Database Tables :
+      ## 1) scheduler
        --------------
             # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
               values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0);
 
                  # Scheduler name : minuteScheduler
-                    * It will run every five minutes and run the WelcomeNotificationJob
+                    * It will run every five minutes and will trigger the WelcomeNotificationJob
                     (based on the frequency_value= "5",  we can adjust the frequency )
 
              # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
