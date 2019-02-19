@@ -56,6 +56,7 @@ It is possible to run **user-service** using Docker:
 
 * Browser console
 -----------------------------
+
 ![user-1](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
 ![user-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 

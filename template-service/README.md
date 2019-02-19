@@ -61,6 +61,9 @@ It is possible to run **template-service** using Docker:
      * Username/password: sa/
 
 * Browser console
+
+------------------------
+
 ![template-db-1](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
 ![template-db-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2.PNG)
 

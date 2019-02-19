@@ -64,6 +64,10 @@ It is possible to run **notification-service** using Docker:
      * Username/password: sa/
 
 * Browser console
+
+-----------------------------
+
+
 ![notification-db-setup](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
 ![notification-db-setup-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
 
