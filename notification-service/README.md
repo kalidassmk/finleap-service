@@ -1,10 +1,24 @@
 ### notification-service challenge: Multi API notification service
 
+   ## Notification-Service can be triggered in two use-cases:
+      # use-case one: assume a new user is created
+        * user data is loaded by user-service
+        * welcome template is loaded by template service and enriched with user-data
+        * once template is enriched with data it is sent directly to imaginary mail-service
+
+      # use-case two: asume newsletter hast to be sent:
+        * newsletter is loaded by template service and enriched with user-data of all subscribed users
+        * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
+
+---------------------------------------------------------------------------------------------
+  ### Database File :
     Folder **src/resources/** contains data.sql files for Database tables details and information .
 
+----------------------------------------------------------------------------------------------------
   ### Database Tables :
 
-      ## 1) scheduler
+       1) scheduler
+       --------------
             # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
               values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0);
 
@@ -19,16 +33,6 @@
                     * It will run every day based on the schedule "time" = 23:03 (hour and minutes) and run the SubscribedNotificationJob
 
 
-
-   ## Notification-Service can be triggered in two use-cases:
-      # use-case one: assume a new user is created
-        * user data is loaded by user-service
-        * welcome template is loaded by template service and enriched with user-data
-        * once template is enriched with data it is sent directly to imaginary mail-service
-
-      # use-case two: asume newsletter hast to be sent:
-        * newsletter is loaded by template service and enriched with user-data of all subscribed users
-        * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
 
 
 ### Technical Implementation :
