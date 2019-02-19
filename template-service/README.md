@@ -1,3 +1,22 @@
+# Template Service  :
+    This the user services which are able to return the following template data
+
+         * Template-Service is able to:
+                   * return a specifc template by id
+                   * return a specifc template by key
+
+ ----------------------------------------------------------
+## Resources
+  base path http://localhost:9003
+
+  Method  | Path                                                |reqest Header                                      |     request payload
+|-------- |-----------------------------------------------------|---------------------------------------------------|-------------------------  |
+| GET     | /getTemplateById?id=1001                            | Content-Type:application/json                     |                           |
+| GET     | /getTemplateByKey?templateKey=WelcomeUserTemplate   | Content-Type:application/json                     |                           |
+| GET     | /getAllTemplate                                     | Content-Type:application/json                     |                           |
+
+
+
 ## Configuration
 
 ### Configuration Files
@@ -78,13 +97,3 @@ Maven Quick start
 **Local:** `template-service>mvnw spring-boot:run`
 
 ----------------------------------
-
-## Resources
-  base path http://localhost:9003
-
-  Method  | Path                                                |reqest Header                                      |     request payload
-|-------- |-----------------------------------------------------|---------------------------------------------------|-------------------------  |
-| GET     | /getTemplateById?id=1001                            | Content-Type:application/json                     |                           |
-| GET     | /getTemplateByKey?templateKey=WelcomeUserTemplate   | Content-Type:application/json                     |                           |
-| GET     | /getAllTemplate                                     | Content-Type:application/json                     |                           |
-
