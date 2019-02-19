@@ -16,21 +16,16 @@ Once the app starts, go to the web browser and visit `http://localhost:9002/`
 
 Open a terminal and run the following commands to ensure that you have valid versions of Java and Maven installed:
 
-```bash
 $ java -version
 java version "1.8.0_102"
 Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
 Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
-```
 
-```bash
 $ mvn -v
 Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)
 Maven home: /usr/local/Cellar/maven/3.3.9/libexec
 Java version: 1.8.0_102, vendor: Oracle Corporation
-```
 
-```bash
 $ docker -v
 Docker version 18.06.1-ce, build e68fc7a
 
@@ -42,10 +37,16 @@ It is possible to run **user-service** using Docker:
 
 2) Run Docker container:  `user-service> docker run -p 9002:9002 user-service`
 
+
+### Service Configuration details
+
 * user-service
     * hostname: user-service
     * Ports: 9002:9002
     * URL: http://localhost:9002
+
+-----------------------------------------------------------------------------------
+### user-service DataBase Configuration details
 
 * H2 user-service DB:
      * dbName: userdb
@@ -54,6 +55,7 @@ It is possible to run **user-service** using Docker:
      * Username/password: sa/
 
 * Browser console
+-----------------------------
 ![user-1](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
 ![user-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 
@@ -62,8 +64,6 @@ It is possible to run **user-service** using Docker:
 Tests can be run by executing following command from the root of the project:
 $ mvn test
 
-In `/src/main/resources/application.properties` file it is possible to change both
-web interface url path, as well as the datasource url.
 
 Maven Quick start
 ------------------

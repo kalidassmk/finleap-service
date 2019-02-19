@@ -54,16 +54,14 @@ It is possible to run **template-service** using Docker:
      * Username/password: sa/
 
 * Browser console
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
+![template-db-1](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
+![template-db-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2.PNG)
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
 
 $ mvn test
 
-In `/src/main/resources/application.properties` file it is possible to change both
-web interface url path, as well as the datasource url.
 
 Maven Quick start
 ------------------

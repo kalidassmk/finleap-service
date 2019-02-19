@@ -63,9 +63,6 @@ Tests can be run by executing following command from the root of the project:
 
 $ mvn test
 
-In `/src/main/resources/application.properties` file it is possible to change both
-web interface url path, as well as the datasource url.
-
 Maven Quick start
 ------------------
 **Local:** `notification-service>mvnw spring-boot:run`
