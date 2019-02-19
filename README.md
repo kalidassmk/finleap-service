@@ -45,9 +45,8 @@
 
   Step 3: Start the notification service
 
-  Step 4: Start the Scheduler
-      * Triggered URL  : http://localhost:9004/startScheduler.
-      * Job Queue - It will start automatically while application startup.
+  Step 4: Start the Scheduler.
+      -- Triggered URL  : http://localhost:9004/startScheduler.
 
 -----------------------------------------------------------------------------------------
 
