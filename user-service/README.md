@@ -1,3 +1,10 @@
+# User Service  :
+    This the user services which are able to return the following user data
+
+        * User-Service is able to return [user-data](users.json) by:
+            * user-id
+            * all users
+
 ## Configuration
 
 ### Configuration Files
@@ -69,3 +76,14 @@ $ mvn test
 Maven Quick start
 ------------------
 **Local:** `user-service>mvnw spring-boot:run`
+
+
+## Resources
+  base path http://localhost:9002
+
+  Method  | Path                   |reqest Header                                      |     request payload
+|-------- |----------------------- |---------------------------------------------------|-------------------------  |
+| GET     | /getAllUser/           | Content-Type:application/json                     |                           |
+| GET     | /getUserById?id=55     | Content-Type:application/json                     |                           |
+
+
