@@ -211,6 +211,7 @@ Maven Quick start
 ------------------
 **Local:** `notification-service>mvnw spring-boot:run`
 
+--------------------------------------------------
 
 #Technical Implementation
 ------------------------
@@ -218,13 +219,26 @@ Maven Quick start
 # Actor
 ---------
 ### com.finleap.notification.actor.SchedulerActor
-
-### com.finleap.notification.actor.JobActor
+ --- It will run based on the frequency and will create the job queue
 
 ### com.finleap.notification.actor.JobQueueActor
+--- Get the job queue and trigger the Job Actor.
+
+### com.finleap.notification.actor.JobActor
+--- Get the Job Queue details and assign the job to job worker
 
 
+-----------------------------------------------
 
+# Job Worker
+-------------
 
+### com.finleap.notification.worker.SubscribedNotificationJob
+--- It will get the Subscribed user data from user service and get Subscribed User Template(newsletter template)
+     from template service then  enrich the both data and send to mail service
 
+### com.finleap.notification.worker.WelcomeNotificationJob
+--- It will get the new user data from user service and get Welcome User Template(welcome template)
+     from template service then  enrich the both data and send to mail service
 
+---------------------------------------------------------
