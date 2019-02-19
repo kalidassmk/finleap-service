@@ -9,10 +9,7 @@
         * newsletter is loaded by template service and enriched with user-data of all subscribed users
         * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
 
----------------------------------------------------------------------------------------------
 
-# Database File :
-    Folder **src/resources/** contains data.sql files for Database tables details and information .
 
 ----------------------------------------------------------------------------------------------
 # Hibernate will create the table while application start up besed the below configuration
@@ -60,7 +57,15 @@
         )
 
 
-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+
+# Hibernate will insert data into created the table while application start up based the below configuration
+    Folder ***src/resources/application.properties contains the configuration.
+      # spring.jpa.hibernate.ddl-auto = create-drop
+  Database data File :
+    Folder **src/resources/data.sql contains table data.
+
+-------------------------------------------------------------------------------------------------
   # Database Tables :
     1) scheduler
        # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
@@ -90,72 +95,18 @@
                         * It will get the new user data from user service and get Welcome User Template(welcome template)
                              from template service then  enrich the both data and send to mail service
 
-     2) Job_Queue
-           # insert into job (ID,JOB_NAME,TRIGGERED_BY,JOB_TYPE,STATUS,LAST_RUN_ON,SCHEDULE_ID)
-               values('1','SubscribedNotificationJob','System','SubscribedNotificationJob','Active','1549992883352','1');
-                     # Job name : SubscribedNotificationJob
-                        * It will get the Subscribed user data from user service and get Subscribed User Template(newsletter template)
-                            from template service then  enrich the both data and send to mail service
-
-                 # insert into job (ID,JOB_NAME,TRIGGERED_BY,JOB_TYPE,STATUS,LAST_RUN_ON,SCHEDULE_ID)
-                     values('2','WelcomeNotificationJob','System','WelcomeNotificationJob','Active','1549992883352','2');
-                     # Job name : WelcomeNotificationJob
-                        * It will get the new user data from user service and get Welcome User Template(welcome template)
-                             from template service then  enrich the both data and send to mail service
-
-
-### Technical Implementation :
-  create table job (
-       id varchar(255) not null,
-        job_name varchar(255),
-        job_type varchar(255),
-        last_run_on varchar(255),
-        schedule_id varchar(255),
-        status varchar(255),
-        triggered_by varchar(255),
-        primary key (id)
-    )
-
-    create table job_queue (
-       id varchar(255) not null,
-        completed_on date,
-        created_on date,
-        instance_name varchar(255),
-        job_id varchar(255),
-        job_name varchar(255),
-        job_type varchar(255),
-        status varchar(255),
-        primary key (id)
-    )
-
-    create table scheduler (
-       id varchar(255) not null,
-        delay varchar(255),
-        description varchar(255),
-        frequency varchar(255),
-        frequency_value integer,
-        last_modified_on timestamp,
-        last_triggered_on timestamp,
-        name varchar(255),
-        next_run varchar(255),
-        start_date date,
-        start_day varchar(255),
-        status varchar(255),
-        time varchar(255),
-        primary key (id)
-    )
+     3) Job_Queue
+             # JobQueue Actor will lookup every 10 seconds in the "JOB_QUEUE" TABLE
+                any NEW job queue has created, if its find the new job queue will trigger the job actor to execute
+                the appropriate job ex.. SubscribedNotificationJob , WelcomeNotificationJob.
+             # Job Actor will assign the job worker to execute the task.
 
 
 ### Technical Implementation :
       ## com.finleap.notification.worker.WelcomeNotificationJob .java
 
 
-
-
-
 ## How to run?
-
-
 
 
 ## Configuration
