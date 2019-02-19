@@ -47,17 +47,17 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
     * hostname: user-service
     * Ports: 9002:9002
     * URL: http://localhost:9002
-    
+
 * template-service
     * hostname: template-service
     * Ports: 9003:9003
     * URL: http://localhost:9003
-    
+
 * notification-service
     * hostname: notification-service
     * Ports: 9004:9004
     * URL: http://localhost:9004
-    
+
 * H2 user-service DB:
      * dbName: userdb
      * Ports: 9002
