@@ -10,8 +10,29 @@
         * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
 
 ----------------------------------------------------------------------------------------------------
-# How to run?
+# How to run the Notification service
 
+  Step 1: start the user service and template service.
+
+  Step 2: Configure the schedulers in the src/resource/data.sql file
+
+    -- dailyScheduler for Subscribed News Letter notification, it will run based on the frequency=daily  and time= 23:05 GMT time stamp
+       it will run on daily 11.05 pm in GMT, we can adjust scheduler based on time column in scheduler table.
+       Note : For local test you can adjust the time into current time, example current time is 12:00 pm GMT,
+               you add additional 2 minutes for application and scheduler start up. so finally you can set the time 12:02.
+               it will run on 12.02 pm GMT
+    insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
+      values('1','dailyScheduler','Subscribed News Letter','daily','23:00','NEW',1,0,0);
+
+    --minuteScheduler for New User Welcome Notification, it will run on every 5 minutes ,frequency=minute, frequency_value=5
+    insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
+      values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0)
+
+  Step 3: Start the notification service
+
+  Step 4: Start the Scheduler
+      Triggered URL  : http://localhost:9004/startScheduler
+      Job Queue - It will start automatically while application startup
 
 ----------------------------------------------------------------------------------------------
 # Hibernate will create the table while application start up besed the below configuration
@@ -99,7 +120,7 @@
 
      3) Job_Queue - SchedulerActor will create the job queue based on the job which has mapped
              # JobQueue Actor will lookup every 10 seconds in the "JOB_QUEUE" TABLE
-                if any NEW job queue has created, if created will trigger the job actor to execute
+                if any NEW job queue has created, it will trigger the job actor to execute
                 the appropriate job ex.. SubscribedNotificationJob , WelcomeNotificationJob.
              # Job Actor will assign the job worker to execute the task.
 
