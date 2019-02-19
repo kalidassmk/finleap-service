@@ -45,8 +45,7 @@
 
   Step 3: Start the notification service
 
-  Step 4: Start the Scheduler.
-      -- Triggered URL  : http://localhost:9004/startScheduler.
+  Step 4: Start the Scheduler, through this URL:  http://localhost:9004/startScheduler.
 
 -----------------------------------------------------------------------------------------
 
