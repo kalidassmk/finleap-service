@@ -35,7 +35,7 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
     * Start the service in docker :  `notification-service> docker run -p 9004:9004 notification-service`
 
 
-### Database Configuration details
+### Service Configuration details
 
 * user-service:
     * hostname: user-service
@@ -52,6 +52,10 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
     * Ports: 9004:9004
     * URL: http://localhost:9004
 
+--------------------------------------------------------------------------------
+
+### user-service DataBase Configuration details
+
 * H2 user-service DB:
      * dbName: userdb
      * Ports: 9002
@@ -63,6 +67,8 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
 
 ![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
 ![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
+
+### template-service DataBase Configuration details
 
 
 * H2 template-service DB:
@@ -77,6 +83,9 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
 
 ![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
 ![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
+
+
+### notification-service DataBase Configuration details
 
 
 * H2 notification-service DB:
