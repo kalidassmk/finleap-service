@@ -15,8 +15,7 @@
 
 ----------------------------------------------------------------------------------------------------
   # Database Tables :
-
-    ## 1) scheduler
+    ##  scheduler
        # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
               values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0);
                  # Scheduler name : minuteScheduler
