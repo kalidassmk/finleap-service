@@ -59,7 +59,7 @@
 
 ---------------------------------------------------------------------------------------------
 
-# Hibernate will insert data into created the table while application start up based the below configuration
+# Hibernate will insert data into created table while application start up based the below configuration
     Folder ***src/resources/application.properties contains the configuration.
       # spring.jpa.hibernate.ddl-auto = create-drop
   Database data File :
@@ -85,19 +85,19 @@
      2) Job
            # insert into job (ID,JOB_NAME,TRIGGERED_BY,JOB_TYPE,STATUS,LAST_RUN_ON,SCHEDULE_ID)
                values('1','SubscribedNotificationJob','System','SubscribedNotificationJob','Active','1549992883352','1');
-                     # Job name : SubscribedNotificationJob
+                     # Job name : SubscribedNotificationJob , mapped with dailyScheduler (SCHEDULE_ID=1)
                         * It will get the Subscribed user data from user service and get Subscribed User Template(newsletter template)
                             from template service then  enrich the both data and send to mail service
 
                  # insert into job (ID,JOB_NAME,TRIGGERED_BY,JOB_TYPE,STATUS,LAST_RUN_ON,SCHEDULE_ID)
                      values('2','WelcomeNotificationJob','System','WelcomeNotificationJob','Active','1549992883352','2');
-                     # Job name : WelcomeNotificationJob
+                     # Job name : WelcomeNotificationJob, mapped with minuteScheduler(SCHEDULE_ID=2)
                         * It will get the new user data from user service and get Welcome User Template(welcome template)
                              from template service then  enrich the both data and send to mail service
 
      3) Job_Queue
              # JobQueue Actor will lookup every 10 seconds in the "JOB_QUEUE" TABLE
-                any NEW job queue has created, if its find the new job queue will trigger the job actor to execute
+                if any NEW job queue has created, if created will trigger the job actor to execute
                 the appropriate job ex.. SubscribedNotificationJob , WelcomeNotificationJob.
              # Job Actor will assign the job worker to execute the task.
 
