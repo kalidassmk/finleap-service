@@ -33,18 +33,14 @@ Java version: 1.8.0_102, vendor: Oracle Corporation
 ```bash
 $ docker -v
 Docker version 18.06.1-ce, build e68fc7a
-```
+
 ### Docker
 
 It is possible to run **user-service** using Docker:
 
-1) Build Docker image:
-**Docker:** `user-service> docker build -t user-service .`
+1) Build Docker image:  `user-service> docker build -t user-service .`
 
-```
-
-2) Run Docker container:
-**Start the service in docker : ** `user-service> docker run -p 9002:9002 user-service`
+2) Run Docker container:  `user-service> docker run -p 9002:9002 user-service`
 
 * user-service
     * hostname: user-service
@@ -56,16 +52,15 @@ It is possible to run **user-service** using Docker:
      * Ports: 9002
      * Admin UI: http://localhost:9002/userConsole
      * Username/password: sa/
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
+
+* Browser console
+![user-1](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
+![user-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
-
-```bash
 $ mvn test
-```
 
 In `/src/main/resources/application.properties` file it is possible to change both
 web interface url path, as well as the datasource url.

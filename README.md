@@ -12,35 +12,27 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
 
 ### user-service
 
-** Go to  `D:\finleap-service>cd user-service`
+    * Go to  `D:\finleap-service>cd user-service`
+    * Maven Quick start Local: `finleap-service/user-service>mvnw spring-boot:run`
 
-**Local:** `finleap-service/user-service>mvnw spring-boot:run`
-
-**Docker:** `user-service> docker build -t user-service .`
-
-** Start the service in docker : **  `user-service> docker run -p 9002:9002 user-service`
+    * Build Docker image: `user-service> docker build -t user-service .`
+    * Start the service in docker :   `user-service> docker run -p 9002:9002 user-service`
 
 
 ### template-service
+    * Go to  `D:\finleap-service> cd template-service`
+    * Maven Quick start Local :  `template-service> mvnw spring-boot:run`
 
-** Go to  `D:\finleap-service> cd template-service`
-
-**Local:** `template-service> mvnw spring-boot:run`
-
-**Docker:** `template-service> docker build -t template-service .`
-
-** Start the service in docker : ** `template-service> docker run -p 9003:9003 template-service`
+    * Build Docker image : `template-service> docker build -t template-service .`
+    * Start the service in docker : `template-service> docker run -p 9003:9003 template-service`
 
 
 ### notification-service
+    * Go to  `D:\finleap-service>cd notification-service`
+    * Maven Quick start Local : `notification-service>mvnw spring-boot:run`
 
-** Go to  `D:\finleap-service>cd notification-service`
-
-**Local:** `notification-service>mvnw spring-boot:run`
-
-**Docker:** `notification-service> docker build -t notification-service .`
-
-**Start the service in docker : ** `notification-service> docker run -p 9004:9004 notification-service`
+    * Build Docker image : `notification-service> docker build -t notification-service .`
+    * Start the service in docker :  `notification-service> docker run -p 9004:9004 notification-service`
 
 
 * user-service:
@@ -63,8 +55,10 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Ports: 9002
      * Admin UI: http://localhost:9002/userConsole
      * Username/password: sa/
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
+
+* Browser console
+![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
+![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 
 
 * H2 template-service DB:
@@ -72,8 +66,10 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Ports: 9003
      * Admin UI: http://localhost:9003/templateConsole
      * Username/password: sa/
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
+
+* Browser console
+![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
+![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
 
 
 * H2 notification-service DB:
@@ -81,6 +77,7 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Ports: 9004
      * Admin UI: http://localhost:9004/console
      * Username/password: sa/
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
+* Browser console
+![notification-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
+![notification-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
 

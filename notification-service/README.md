@@ -38,13 +38,9 @@ Docker version 18.06.1-ce, build e68fc7a
 
 It is possible to run **notification-service** using Docker:
 
-1) Build Docker image:
-**Docker:** `notification-service> docker build -t notification-service .`
+1) Build Docker image: `notification-service> docker build -t notification-service .`
 
-```
-
-2) Run Docker container:
-**Start the service in docker : ** `notification-service> docker run -p 9004:9004 notification-service`
+2) Run Docker container: `notification-service> docker run -p 9004:9004 notification-service`
 
 * notification-service
     * hostname: notification-service
@@ -56,16 +52,16 @@ It is possible to run **notification-service** using Docker:
      * Ports: 9004
      * Admin UI: http://localhost:9004/console
      * Username/password: sa/
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
-![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
+
+* Browser console
+![notification-db-setup](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
+![notification-db-setup-2](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
 
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
 
-```bash
 $ mvn test
-```
 
 In `/src/main/resources/application.properties` file it is possible to change both
 web interface url path, as well as the datasource url.

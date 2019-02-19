@@ -38,13 +38,9 @@ Docker version 18.06.1-ce, build e68fc7a
 
 It is possible to run **template-service** using Docker:
 
-1) Build Docker image:
-**Docker:** `template-service> docker build -t template-service .`
+1) Build Docker image:  `template-service> docker build -t template-service .`
 
-```
-
-2) Run Docker container:
-**Start the service in docker : ** `template-service> docker run -p 9003:9003 template-service`
+2) Run Docker container: `template-service> docker run -p 9003:9003 template-service`
 
 * template-service
     * hostname: template-service
@@ -56,15 +52,15 @@ It is possible to run **template-service** using Docker:
      * Ports: 9003
      * Admin UI: http://localhost:9003/templateConsole
      * Username/password: sa/
+
+* Browser console
 ![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
 ![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
 
-```bash
 $ mvn test
-```
 
 In `/src/main/resources/application.properties` file it is possible to change both
 web interface url path, as well as the datasource url.
