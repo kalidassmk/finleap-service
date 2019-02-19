@@ -39,26 +39,26 @@ Docker version 18.06.1-ce, build e68fc7a
 It is possible to run **user-service** using Docker:
 
 1) Build Docker image:
-```bash
-$ mvn clean package
-$ docker build -f Dockerfile -t user-service .
+**Docker:** `user-service> docker build -t user-service .`
+
 ```
 
 2) Run Docker container:
-```bash
-$ docker run -p 9002:9002 user-service
-```
-3. `use post man to test the below API's `
-4. `Authentication using a X-Auth-Token header for REST APIs`
-5. `base path http://localhost:9002`
+**Start the service in docker : ** `user-service> docker run -p 9002:9002 user-service`
 
+* user-service
+    * hostname: user-service
+    * Ports: 9002:9002
+    * URL: http://localhost:9002
 
-## Docker
+* H2 user-service DB:
+     * dbName: userdb
+     * Ports: 9002
+     * Admin UI: http://localhost:9002/userConsole
+     * Username/password: sa/
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 
-Poject path contain the **Dockerfile** file:
-
-* **/Dockerfile** - Docker build file for executing user-service Docker image.
-Instructions to build artifacts, copy build artifacts to docker image and then run app on proper port with proper configuration file.
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
@@ -72,6 +72,4 @@ web interface url path, as well as the datasource url.
 
 Maven Quick start
 ------------------
-1. `mvn package`
-2. `java -jar target/user-service.jar`
-3. `base path http://localhost:9002`
+**Local:** `user-service>mvnw spring-boot:run`

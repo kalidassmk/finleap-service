@@ -10,7 +10,7 @@ Folder **src/resources/** contains config files for **notification-service** Spr
 
 There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker.
 
-Once the app starts, go to the web browser and visit `http://localhost:9001/`
+Once the app starts, go to the web browser and visit `http://localhost:9004/`
 
 ### Maven
 
@@ -39,26 +39,26 @@ Docker version 18.06.1-ce, build e68fc7a
 It is possible to run **notification-service** using Docker:
 
 1) Build Docker image:
-```bash
-$ mvn clean package
-$ docker build -f Dockerfile -t notification-service .
+**Docker:** `notification-service> docker build -t notification-service .`
+
 ```
 
 2) Run Docker container:
-```bash
-$ docker run -p 9004:9004 notification-service
-```
-3. `use post man to test the below API's `
-4. `Authentication using a X-Auth-Token header for REST APIs`
-5. `base path http://localhost:9001`
+**Start the service in docker : ** `notification-service> docker run -p 9004:9004 notification-service`
 
+* notification-service
+    * hostname: notification-service
+    * Ports: 9004:9004
+    * URL: http://localhost:9004
 
-## Docker
+* H2 notification-service DB:
+     * dbName: notificationdb
+     * Ports: 9004
+     * Admin UI: http://localhost:9004/console
+     * Username/password: sa/
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
 
-Poject path contain the **Dockerfile** file:
-
-* **/Dockerfile** - Docker build file for executing notification-service Docker image.
-Instructions to build artifacts, copy build artifacts to docker image and then run app on proper port with proper configuration file.
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
@@ -72,11 +72,10 @@ web interface url path, as well as the datasource url.
 
 Maven Quick start
 ------------------
-1. `mvn package`
-2. `java -jar target/notification-service.jar`
-3. `base path http://localhost:9004`
+**Local:** `notification-service>mvnw spring-boot:run`
 
 
 Job Scheduler
 ------------------
+
 

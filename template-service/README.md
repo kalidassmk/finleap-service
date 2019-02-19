@@ -2,7 +2,7 @@
 
 ### Configuration Files
 
-Folder **src/resources/** contains config files for **template-servic** Spring Boot application.
+Folder **src/resources/** contains config files for **template-service** Spring Boot application.
 
 * **src/resources/application.properties** - main configuration file. Here it is possible to change the port number.
 
@@ -36,29 +36,28 @@ Docker version 18.06.1-ce, build e68fc7a
 ```
 ### Docker
 
-It is possible to run **template-servic** using Docker:
+It is possible to run **template-service** using Docker:
 
 1) Build Docker image:
-```bash
-$ mvn clean package
-$ docker build -f Dockerfile -t template-servic .
+**Docker:** `template-service> docker build -t template-service .`
+
 ```
 
 2) Run Docker container:
-```bash
-$ docker run -p 9003:9003 template-servic
-```
-3. `use post man to test the below API's `
-4. `Authentication using a X-Auth-Token header for REST APIs`
-5. `base path http://localhost:9001`
+**Start the service in docker : ** `template-service> docker run -p 9003:9003 template-service`
 
+* template-service
+    * hostname: template-service
+    * Ports: 9003:9003
+    * URL: http://localhost:9003
 
-## Docker
-
-Poject path contain the **Dockerfile** file:
-
-* **/Dockerfile** - Docker build file for executing template-servic Docker image.
-Instructions to build artifacts, copy build artifacts to docker image and then run app on proper port with proper configuration file.
+* H2 template-service DB:
+     * dbName: templatedb
+     * Ports: 9003
+     * Admin UI: http://localhost:9003/templateConsole
+     * Username/password: sa/
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
+![createUserSession](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
 
 ## Tests
 Tests can be run by executing following command from the root of the project:
@@ -72,6 +71,6 @@ web interface url path, as well as the datasource url.
 
 Maven Quick start
 ------------------
-1. `mvn package`
-2. `java -jar target/template-servic.jar`
-3. `base path http://localhost:9003`
+**Local:** `template-service>mvnw spring-boot:run`
+
+
