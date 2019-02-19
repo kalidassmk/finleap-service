@@ -35,6 +35,8 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
     * Start the service in docker :  `notification-service> docker run -p 9004:9004 notification-service`
 
 
+### Database Configuration details
+
 * user-service:
     * hostname: user-service
     * Ports: 9002:9002
@@ -57,6 +59,8 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Username/password: sa/
 
 * Browser console
+------------------------------------------------------
+
 ![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-1.PNG)
 ![user-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/user/user-service-local-db-connection-2.PNG)
 
@@ -68,6 +72,9 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Username/password: sa/
 
 * Browser console
+------------------------------------------------------
+
+
 ![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-1.PNG)
 ![template-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/template/template-service-local-db-connection-2)
 
@@ -77,7 +84,10 @@ Code for SpringBoot Micro Services with akka, java 8, H2 db and Docker container
      * Ports: 9004
      * Admin UI: http://localhost:9004/console
      * Username/password: sa/
+
 * Browser console
+------------------------------------------------------
+
 ![notification-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection.PNG)
 ![notification-db](https://github.com/kalidassmk/finleap-service/blob/master/setup/notification/notification-local-db-connection-2.PNG)
 
