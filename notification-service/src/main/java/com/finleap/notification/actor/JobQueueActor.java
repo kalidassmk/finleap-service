@@ -18,6 +18,9 @@ import java.util.Map;
 
 import static com.finleap.notification.container.SpringExtension.SPRING_EXTENSION_PROVIDER;
 
+/**
+ * The type Job queue actor.
+ */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class JobQueueActor extends UntypedActor {
@@ -25,16 +28,30 @@ public class JobQueueActor extends UntypedActor {
     @Autowired
     private ActorSystem system;
 
+    /**
+     * The Job repo.
+     */
     JobRepo jobRepo;
 
+    /**
+     * The constant statusMap.
+     */
     public static Map<ActorRef, String> statusMap = new HashMap<>();
 
+    /**
+     * The Job actor count.
+     */
     @Value("${job.actor.count}")
     int jobActorCount;
 
     private final Logger logger = LoggerFactory.getLogger(JobQueueActor.class);
 
 
+    /**
+     * Instantiates a new Job queue actor.
+     *
+     * @param jobRepo the job repo
+     */
     public JobQueueActor(JobRepo jobRepo) {
         this.jobRepo = jobRepo;
     }
@@ -65,6 +82,11 @@ public class JobQueueActor extends UntypedActor {
     }
 
 
+    /**
+     * Any ready actor actor ref.
+     *
+     * @return the actor ref
+     */
     public ActorRef anyReadyActor() {
         return statusMap.entrySet().stream().filter(actor -> "ready".equals(actor.getValue())).findFirst().get().getKey();
     }

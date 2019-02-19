@@ -8,12 +8,23 @@ import com.finleap.notification.entity.Schedule;
 
 import scala.concurrent.duration.FiniteDuration;
 
+/**
+ * The type Schedule helper.
+ */
 public class ScheduleHelper {
 
+	/**
+	 * Next run sync long.
+	 *
+	 * @param schedule the schedule
+	 * @param nowCal   the now cal
+	 * @return the long
+	 * @throws AppException the app exception
+	 */
 	public static long nextRunSync(Schedule schedule, Calendar nowCal) throws AppException {
 
 		long durationInSec = 0;
-		Calendar scheduleCal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Singapore"));
+		Calendar scheduleCal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 		String[] hourMin = schedule.getTime().split(":");
 		int curMonth = nowCal.get(Calendar.MONTH);
 		switch (schedule.getFrequency()) {
@@ -35,12 +46,18 @@ public class ScheduleHelper {
 
 	}
 
+	/**
+	 * Show timein gmt string.
+	 *
+	 * @param cal the cal
+	 * @return the string
+	 */
 	public static String ShowTimeinGMT(Calendar cal) {
 		Calendar calendar = cal;
 		StringBuilder _ret = new StringBuilder();
 
 		if (cal == null) {
-			calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Singapore"));
+			calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 		}
 
 		_ret.append(calendar.get(Calendar.DATE) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-"
@@ -49,23 +66,68 @@ public class ScheduleHelper {
 		return _ret.toString();
 	}
 
+	/**
+	 * Gets frequency.
+	 *
+	 * @param schedule the schedule
+	 * @return the frequency
+	 */
 	public static FiniteDuration getFrequency(Schedule schedule) {
 		FiniteDuration frequency = null;
 		switch (schedule.getFrequency()) {
 		case "daily":
 			return FiniteDuration.create(24, TimeUnit.HOURS);
+		case "minute":
+			return FiniteDuration.create(schedule.getFrequencyValues(), TimeUnit.MINUTES);
 		}
 		return frequency;
 	}
 
+	/**
+	 * The enum Week days.
+	 */
 	public enum weekDays {
-		SUNDAY(1), MONDAY(2), TUESDAY(3), WEDNESDAY(4), THURSDAY(5), FRIDAY(6), SATURDAY(7);
+		/**
+		 * Sunday week days.
+		 */
+		SUNDAY(1),
+		/**
+		 * Monday week days.
+		 */
+		MONDAY(2),
+		/**
+		 * Tuesday week days.
+		 */
+		TUESDAY(3),
+		/**
+		 * Wednesday week days.
+		 */
+		WEDNESDAY(4),
+		/**
+		 * Thursday week days.
+		 */
+		THURSDAY(5),
+		/**
+		 * Friday week days.
+		 */
+		FRIDAY(6),
+		/**
+		 * Saturday week days.
+		 */
+		SATURDAY(7);
 		private final int day;
 
 		weekDays(int day) {
 			this.day = day;
 		}
 
+		/**
+		 * Gets day.
+		 *
+		 * @param d the d
+		 * @return the day
+		 * @throws Exception the exception
+		 */
 		public static weekDays getDay(String d) throws Exception {
 			String day = d.toUpperCase();
 			switch (day) {

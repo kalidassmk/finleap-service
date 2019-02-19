@@ -31,238 +31,238 @@ public class Schedule {
 	private String status;
 
 
-	/**
-	 * Gets id.
-	 *
-	 * @return the id
-	 */
-	public String getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public String getId() {
 		return id;
 	}
 
-	/**
-	 * Sets id.
-	 *
-	 * @param id the id
-	 */
-	public void setId(String id) {
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(String id) {
 		this.id = id;
 	}
 
-	/**
-	 * Gets name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName() {
 		return name;
 	}
 
-	/**
-	 * Sets name.
-	 *
-	 * @param name the name
-	 */
-	public void setName(String name) {
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * Gets description.
-	 *
-	 * @return the description
-	 */
-	public String getDescription() {
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
+    public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * Sets description.
-	 *
-	 * @param description the description
-	 */
-	public void setDescription(String description) {
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
+    public void setDescription(String description) {
 		this.description = description;
 	}
 
-	/**
-	 * Gets frequency.
-	 *
-	 * @return the frequency
-	 */
-	public String getFrequency() {
+    /**
+     * Gets frequency.
+     *
+     * @return the frequency
+     */
+    public String getFrequency() {
 		return frequency;
 	}
 
-	/**
-	 * Sets frequency.
-	 *
-	 * @param frequency the frequency
-	 */
-	public void setFrequency(String frequency) {
+    /**
+     * Sets frequency.
+     *
+     * @param frequency the frequency
+     */
+    public void setFrequency(String frequency) {
 		this.frequency = frequency;
 	}
 
 
-	/**
-	 * Gets start date.
-	 *
-	 * @return the start date
-	 */
-	public Date getStartDate() {
+    /**
+     * Gets start date.
+     *
+     * @return the start date
+     */
+    public Date getStartDate() {
 		return startDate;
 	}
 
-	/**
-	 * Sets start date.
-	 *
-	 * @param startDate the start date
-	 */
-	public void setStartDate(Date startDate) {
+    /**
+     * Sets start date.
+     *
+     * @param startDate the start date
+     */
+    public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	/**
-	 * Gets start day.
-	 *
-	 * @return the start day
-	 */
-	public String getStartDay() {
+    /**
+     * Gets start day.
+     *
+     * @return the start day
+     */
+    public String getStartDay() {
 		return startDay;
 	}
 
-	/**
-	 * Sets start day.
-	 *
-	 * @param startDay the start day
-	 */
-	public void setStartDay(String startDay) {
+    /**
+     * Sets start day.
+     *
+     * @param startDay the start day
+     */
+    public void setStartDay(String startDay) {
 		this.startDay = startDay;
 	}
 
-	/**
-	 * Gets time.
-	 *
-	 * @return the time
-	 */
-	public String getTime() {
+    /**
+     * Gets time.
+     *
+     * @return the time
+     */
+    public String getTime() {
 		return time;
 	}
 
-	/**
-	 * Sets time.
-	 *
-	 * @param time the time
-	 */
-	public void setTime(String time) {
+    /**
+     * Sets time.
+     *
+     * @param time the time
+     */
+    public void setTime(String time) {
 		this.time = time;
 	}
 
-	/**
-	 * Gets delay.
-	 *
-	 * @return the delay
-	 */
-	public String getDelay() {
+    /**
+     * Gets delay.
+     *
+     * @return the delay
+     */
+    public String getDelay() {
 		return delay;
 	}
 
-	/**
-	 * Sets delay.
-	 *
-	 * @param delay the delay
-	 */
-	public void setDelay(String delay) {
+    /**
+     * Sets delay.
+     *
+     * @param delay the delay
+     */
+    public void setDelay(String delay) {
 		this.delay = delay;
 	}
 
-	/**
-	 * Gets next run.
-	 *
-	 * @return the next run
-	 */
-	public String getNextRun() {
+    /**
+     * Gets next run.
+     *
+     * @return the next run
+     */
+    public String getNextRun() {
 		return nextRun;
 	}
 
-	/**
-	 * Sets next run.
-	 *
-	 * @param nextRun the next run
-	 */
-	public void setNextRun(String nextRun) {
+    /**
+     * Sets next run.
+     *
+     * @param nextRun the next run
+     */
+    public void setNextRun(String nextRun) {
 		this.nextRun = nextRun;
 	}
 
-	/**
-	 * Gets last modified on.
-	 *
-	 * @return the last modified on
-	 */
-	public Timestamp getLastModifiedOn() {
+    /**
+     * Gets last modified on.
+     *
+     * @return the last modified on
+     */
+    public Timestamp getLastModifiedOn() {
 		return lastModifiedOn;
 	}
 
-	/**
-	 * Sets last modified on.
-	 *
-	 * @param lastModifiedOn the last modified on
-	 */
-	public void setLastModifiedOn(Timestamp lastModifiedOn) {
+    /**
+     * Sets last modified on.
+     *
+     * @param lastModifiedOn the last modified on
+     */
+    public void setLastModifiedOn(Timestamp lastModifiedOn) {
 		this.lastModifiedOn = lastModifiedOn;
 	}
 
-	/**
-	 * Gets last triggered on.
-	 *
-	 * @return the last triggered on
-	 */
-	public Timestamp getLastTriggeredOn() {
+    /**
+     * Gets last triggered on.
+     *
+     * @return the last triggered on
+     */
+    public Timestamp getLastTriggeredOn() {
 		return lastTriggeredOn;
 	}
 
-	/**
-	 * Sets last triggered on.
-	 *
-	 * @param lastTriggeredOn the last triggered on
-	 */
-	public void setLastTriggeredOn(Timestamp lastTriggeredOn) {
+    /**
+     * Sets last triggered on.
+     *
+     * @param lastTriggeredOn the last triggered on
+     */
+    public void setLastTriggeredOn(Timestamp lastTriggeredOn) {
 		this.lastTriggeredOn = lastTriggeredOn;
 	}
 
-	/**
-	 * Gets status.
-	 *
-	 * @return the status
-	 */
-	public String getStatus() {
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public String getStatus() {
 		return status;
 	}
 
-	/**
-	 * Sets status.
-	 *
-	 * @param status the status
-	 */
-	public void setStatus(String status) {
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(String status) {
 		this.status = status;
 	}
 
-	/**
-	 * Gets frequency values.
-	 *
-	 * @return the frequency values
-	 */
-	public int getFrequencyValues() {
+    /**
+     * Gets frequency values.
+     *
+     * @return the frequency values
+     */
+    public int getFrequencyValues() {
 		return frequencyValues;
 	}
 
-	/**
-	 * Sets frequency values.
-	 *
-	 * @param frequencyValues the frequency values
-	 */
-	public void setFrequencyValues(int frequencyValues) {
+    /**
+     * Sets frequency values.
+     *
+     * @param frequencyValues the frequency values
+     */
+    public void setFrequencyValues(int frequencyValues) {
 		this.frequencyValues = frequencyValues;
 	}
 

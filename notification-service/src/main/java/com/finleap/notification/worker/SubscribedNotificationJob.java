@@ -3,7 +3,10 @@ package com.finleap.notification.worker;
 import com.finleap.notification.entity.NotificationTemplate;
 import com.finleap.notification.entity.Template;
 import com.finleap.notification.entity.User;
+import com.finleap.notification.repository.impl.JobRepoImpl;
 import com.finleap.notification.resp.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -13,23 +16,26 @@ import java.util.stream.Collectors;
 /**
  * com.finleap.notification.worker
  *
- * @author Kalidass Mahalingam
- * 17/2/2019
+ * @author Kalidass Mahalingam 17/2/2019
  */
 @Component
 @Qualifier("subscribedNotificationJob")
 public class SubscribedNotificationJob extends JobWorker {
 
+    private final Logger logger = LoggerFactory.getLogger(SubscribedNotificationJob.class);
+
+
     @Override
     public void execute(NotificationTemplate notificationTemplate) {
         List<User> allUserData = getAllUserData();
-        System.out.println("allUserData.toString() = " + allUserData.toString());
+        logger.info("allUserData.toString() = " + allUserData.toString());
         List<Template> templateData = getTemplateByKey("SubscribedUserTemplate");
-        System.out.println("templateData.toString() = " + templateData.toString());
+        logger.info("templateData.toString() = " + templateData.toString());
         enrichData(notificationTemplate, allUserData, templateData);
     }
 
     private void enrichData(NotificationTemplate notificationTemplate, List<User> userData, List<Template> templateData) {
+        logger.info("enrich data ............................ " );
         Template template = templateData.get(0);
         String body = template.getBody();
         userData = userData.stream()

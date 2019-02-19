@@ -14,15 +14,26 @@ import org.springframework.stereotype.Component;
 import java.sql.Date;
 import java.util.Random;
 
+/**
+ * The type Scheduler actor.
+ */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SchedulerActor extends UntypedActor {
 
+    /**
+     * The Job repo.
+     */
     JobRepo jobRepo;
 
     private final Logger logger = LoggerFactory.getLogger(SchedulerActor.class);
 
 
+    /**
+     * Instantiates a new Scheduler actor.
+     *
+     * @param jobRepo the job repo
+     */
     public SchedulerActor(JobRepo jobRepo) {
         this.jobRepo = jobRepo;
     }

@@ -1,9 +1,15 @@
 package com.finleap.notification.exception;
 
 
+/**
+ * The type App exception.
+ */
 public class AppException  extends Exception{
 
-	public AppException() {
+    /**
+     * Instantiates a new App exception.
+     */
+    public AppException() {
 		super();
 	}
 
@@ -12,7 +18,12 @@ public class AppException  extends Exception{
 		return super.getMessage();
 	}
 
-	public AppException(String message) {
+    /**
+     * Instantiates a new App exception.
+     *
+     * @param message the message
+     */
+    public AppException(String message) {
 		super(message);
 	}
 

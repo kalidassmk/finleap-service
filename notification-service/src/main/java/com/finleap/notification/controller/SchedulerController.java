@@ -12,15 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.finleap.notification.resp.ResponseToClient.objectToClient;
 
+/**
+ * The type Scheduler controller.
+ */
 @RestController
 public class SchedulerController {
 
+    /**
+     * The Scheduler service.
+     */
     @Autowired
     SchedulerService schedulerService;
 
     private final Logger logger = LoggerFactory.getLogger(SchedulerController.class);
 
 
+    /**
+     * Start scheduler json node.
+     *
+     * @return the json node
+     */
     @RequestMapping("/startScheduler")
     public JsonNode startScheduler() {
         logger.info("startScheduler.................");

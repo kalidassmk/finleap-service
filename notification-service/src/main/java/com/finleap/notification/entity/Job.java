@@ -5,13 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The type Job.
+ */
 @Entity
 @Table(name = "Job")
 public class Job {
-	
-	public static final String JOB_STATUS_COMPLETED = "COMPLETED";
-	public static final String JOB_TRIGGERED_BY_SCHEDULER = "BY_SCHEDULER";
-	public static final String JOB_TRIGGERED_ON_DEMAND = "ON_DEMAND";
+
+    /**
+     * The constant JOB_STATUS_COMPLETED.
+     */
+    public static final String JOB_STATUS_COMPLETED = "COMPLETED";
+    /**
+     * The constant JOB_TRIGGERED_BY_SCHEDULER.
+     */
+    public static final String JOB_TRIGGERED_BY_SCHEDULER = "BY_SCHEDULER";
+    /**
+     * The constant JOB_TRIGGERED_ON_DEMAND.
+     */
+    public static final String JOB_TRIGGERED_ON_DEMAND = "ON_DEMAND";
 
 	@Id
 	@Column(name = "ID")
@@ -35,59 +47,129 @@ public class Job {
 	@Column(name = "SCHEDULE_ID")
 	private String scheduleId;
 
-	public String getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(String id) {
 		this.id = id;
 	}
 
-	public String getJobName() {
+    /**
+     * Gets job name.
+     *
+     * @return the job name
+     */
+    public String getJobName() {
 		return jobName;
 	}
 
-	public void setJobName(String jobName) {
+    /**
+     * Sets job name.
+     *
+     * @param jobName the job name
+     */
+    public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
 
-	public String getTriggeredBy() {
+    /**
+     * Gets triggered by.
+     *
+     * @return the triggered by
+     */
+    public String getTriggeredBy() {
 		return triggeredBy;
 	}
 
-	public void setTriggeredBy(String triggeredBy) {
+    /**
+     * Sets triggered by.
+     *
+     * @param triggeredBy the triggered by
+     */
+    public void setTriggeredBy(String triggeredBy) {
 		this.triggeredBy = triggeredBy;
 	}
 
-	public String getJobType() {
+    /**
+     * Gets job type.
+     *
+     * @return the job type
+     */
+    public String getJobType() {
 		return jobType;
 	}
 
-	public void setJobType(String jobType) {
+    /**
+     * Sets job type.
+     *
+     * @param jobType the job type
+     */
+    public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
 
-	public String getStatus() {
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public String getLastRunOn() {
+    /**
+     * Gets last run on.
+     *
+     * @return the last run on
+     */
+    public String getLastRunOn() {
 		return lastRunOn;
 	}
 
-	public void setLastRunOn(String lastRunOn) {
+    /**
+     * Sets last run on.
+     *
+     * @param lastRunOn the last run on
+     */
+    public void setLastRunOn(String lastRunOn) {
 		this.lastRunOn = lastRunOn;
 	}
 
-	public String getScheduleId() {
+    /**
+     * Gets schedule id.
+     *
+     * @return the schedule id
+     */
+    public String getScheduleId() {
 		return scheduleId;
 	}
 
-	public void setScheduleId(String scheduleId) {
+    /**
+     * Sets schedule id.
+     *
+     * @param scheduleId the schedule id
+     */
+    public void setScheduleId(String scheduleId) {
 		this.scheduleId = scheduleId;
 	}
 

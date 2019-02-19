@@ -3,7 +3,6 @@ package com.finleap.notification.entity;
 /**
  * Encapsulates the information about user's situation.
  */
-
 public class User {
 
     private int     id;
@@ -19,7 +18,6 @@ public class User {
     private boolean subscribedNewsletter;
 
     private String body;
-
 
 
     /**
@@ -131,10 +129,20 @@ public class User {
         this.subscribedNewsletter = subscribedNewsletter;
     }
 
+    /**
+     * Gets body.
+     *
+     * @return the body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * Sets body.
+     *
+     * @param body the body
+     */
     public void setBody(String body) {
         this.body = body;
     }

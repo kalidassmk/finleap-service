@@ -1,7 +1,15 @@
 package com.finleap.notification.service;
 
+/**
+ * The interface Scheduler service.
+ */
 public interface SchedulerService {
-	
-	 boolean startScheduler();
+
+	/**
+	 * Start scheduler boolean.
+	 *
+	 * @return the boolean
+	 */
+	boolean startScheduler();
 
 }

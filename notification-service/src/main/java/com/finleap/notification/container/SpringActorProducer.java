@@ -7,8 +7,7 @@ import org.springframework.context.ApplicationContext;
 /**
  * com.finleap.notification.container
  *
- * @author Kalidass Mahalingam
- * 16 Feb 2019
+ * @author Kalidass Mahalingam 16 Feb 2019
  */
 public class SpringActorProducer implements IndirectActorProducer {
 
@@ -16,6 +15,12 @@ public class SpringActorProducer implements IndirectActorProducer {
 
     private String beanActorName;
 
+    /**
+     * Instantiates a new Spring actor producer.
+     *
+     * @param applicationContext the application context
+     * @param beanActorName      the bean actor name
+     */
     public SpringActorProducer(ApplicationContext applicationContext,
                                String beanActorName) {
         this.applicationContext = applicationContext;

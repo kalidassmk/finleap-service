@@ -21,8 +21,7 @@ import java.util.List;
 /**
  * com.finleap.notification.repository
  *
- * @author Kalidass Mahalingam
- * 13/2/2019
+ * @author Kalidass Mahalingam 13/2/2019
  */
 @Component
 public class JobRepoImpl implements JobRepo {
@@ -43,12 +42,23 @@ public class JobRepoImpl implements JobRepo {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    /**
+     * Instantiates a new Job repo.
+     */
     public JobRepoImpl() {
     }
 
+    /**
+     * The Jdbc template.
+     */
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    /**
+     * Instantiates a new Job repo.
+     *
+     * @param namedParameterJdbcTemplate the named parameter jdbc template
+     */
     public JobRepoImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
@@ -104,13 +114,34 @@ public class JobRepoImpl implements JobRepo {
      */
     public static class JobRowMapper implements RowMapper {
 
+        /**
+         * The Id.
+         */
         static final String ID = "ID";
+        /**
+         * The Job name.
+         */
         static final String JOB_NAME = "JOB_NAME";
+        /**
+         * The Triggered by.
+         */
         static final String TRIGGERED_BY = "TRIGGERED_BY";
+        /**
+         * The Job type.
+         */
         static final String JOB_TYPE = "JOB_TYPE";
+        /**
+         * The Status.
+         */
         static final String STATUS = "STATUS";
 
+        /**
+         * The Last run on.
+         */
         static final String LAST_RUN_ON = "LAST_RUN_ON";
+        /**
+         * The Schedule id.
+         */
         static final String SCHEDULE_ID = "SCHEDULE_ID";
 
         public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -132,9 +163,21 @@ public class JobRepoImpl implements JobRepo {
      */
     public static class JobQueueRowMapper implements RowMapper {
 
+        /**
+         * The Id.
+         */
         static final String ID = "ID";
+        /**
+         * The Job name.
+         */
         static final String JOB_NAME = "JOB_NAME";
+        /**
+         * The Job type.
+         */
         static final String JOB_TYPE = "JOB_TYPE";
+        /**
+         * The Job id.
+         */
         static final String JOB_ID = "JOB_ID";
 
         public Object mapRow(ResultSet rs, int rowNum) throws SQLException {

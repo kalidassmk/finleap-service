@@ -27,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 import static com.finleap.notification.container.SpringExtension.SPRING_EXTENSION_PROVIDER;
 
 /**
+ * The type Scheduler service.
+ *
  * @author Kalidass Mahalingam
  */
 @Service("SchedulerService")
@@ -34,9 +36,15 @@ public class SchedulerServiceImpl implements SchedulerService {
 
     private final JobRepo jobRepo;
 
+    /**
+     * The Scheduler repo.
+     */
     @Autowired
     SchedulerRepo schedulerRepo;
 
+    /**
+     * The Is started.
+     */
     public boolean isStarted = false;
 
     @Autowired
@@ -45,6 +53,12 @@ public class SchedulerServiceImpl implements SchedulerService {
     private final Logger logger = LoggerFactory.getLogger(SchedulerServiceImpl.class);
 
 
+    /**
+     * Instantiates a new Scheduler service.
+     *
+     * @param jobRepo the job repo
+     * @param system  the system
+     */
     @Autowired
     public SchedulerServiceImpl(JobRepo jobRepo, ActorSystem system) {
         this.jobRepo = jobRepo;
@@ -65,6 +79,11 @@ public class SchedulerServiceImpl implements SchedulerService {
         return true;
     }
 
+    /**
+     * Start schedule sync boolean.
+     *
+     * @return the boolean
+     */
     public boolean startScheduleSync() {
         List<Schedule> existingScheduleList = SchedulerContainer.getInstance().synchingExistingScheduler();
         existingScheduleList.stream().forEach(schedule -> {
@@ -89,11 +108,17 @@ public class SchedulerServiceImpl implements SchedulerService {
             }
         });
 
-        System.out.println("startScheduleSync");
+        logger.info("startScheduleSync");
 
         return false;
     }
 
+    /**
+     * Add schedule boolean.
+     *
+     * @param schedule the schedule
+     * @return the boolean
+     */
     public boolean addSchedule(Schedule schedule) {
 
         try {
@@ -105,11 +130,12 @@ public class SchedulerServiceImpl implements SchedulerService {
             Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Singapore"));
             long delayInSec = ScheduleHelper.nextRunSync(schedule, currentTime);
 
-            System.out.println("delay....................." + delayInSec);
             schedule.setDelay("" + delayInSec);
 
             FiniteDuration delay = FiniteDuration.create(delayInSec, TimeUnit.SECONDS);
             FiniteDuration frequency = ScheduleHelper.getFrequency(schedule);
+
+            logger.info("Scheduler {}, delay {}, Frequency {} .....................", schedule.getName(), delayInSec, frequency.toString());
 
             if ("once".equals(schedule.getFrequency())) {
                 cancellable = actorSystem.scheduler().scheduleOnce(delay, scheduleActor, schedule,
@@ -130,6 +156,12 @@ public class SchedulerServiceImpl implements SchedulerService {
         return true;
     }
 
+    /**
+     * Remove schedule boolean.
+     *
+     * @param schedule the schedule
+     * @return the boolean
+     */
     public boolean removeSchedule(Schedule schedule) {
         String id = schedule.getId();
         Cancellable cancellable = SchedulerContainer.getInstance().getCancellableSchedule(id);
@@ -142,6 +174,12 @@ public class SchedulerServiceImpl implements SchedulerService {
         return true;
     }
 
+    /**
+     * Start registration boolean.
+     *
+     * @param jobRepo the job repo
+     * @return the boolean
+     */
     public boolean startRegistration(JobRepo jobRepo) {
         ActorRef jobQueueActor = system.actorOf(SPRING_EXTENSION_PROVIDER.get(system).props("jobQueueActor"), "jobQueueActor");
         system.scheduler().schedule(Duration.create(30, TimeUnit.SECONDS), Duration.create(50, TimeUnit.SECONDS), jobQueueActor, "jobqueue", system.dispatcher(), null);

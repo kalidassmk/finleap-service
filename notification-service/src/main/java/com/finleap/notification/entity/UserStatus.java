@@ -3,10 +3,10 @@ package com.finleap.notification.entity;
 import java.io.Serializable;
 
 /**
+ * The type User status.
  *
  * @author Kalidass Mahalingam 12/2/2019
  */
-
 public class UserStatus implements Serializable {
 
 

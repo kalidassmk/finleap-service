@@ -28,6 +28,9 @@ public class EmailServiceImpl implements EmailService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpl.class);
 
+    /**
+     * The Batch size.
+     */
     @Value("${email.batch.size}")
     int batchSize;
 

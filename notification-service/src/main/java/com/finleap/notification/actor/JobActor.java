@@ -13,19 +13,38 @@ import org.springframework.web.client.RestTemplate;
 
 import static com.finleap.notification.actor.JobQueueActor.statusMap;
 
+/**
+ * The type Job actor.
+ */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class JobActor extends UntypedActor {
 
+    /**
+     * The Subscribed notification job.
+     */
     JobWorker subscribedNotificationJob;
 
+    /**
+     * The Welcome notification job.
+     */
     JobWorker welcomeNotificationJob;
 
+    /**
+     * The Rest template.
+     */
     RestTemplate restTemplate;
 
     private final Logger logger = LoggerFactory.getLogger(JobActor.class);
 
 
+    /**
+     * Instantiates a new Job actor.
+     *
+     * @param subscribedNotificationJob the subscribed notification job
+     * @param welcomeNotificationJob    the welcome notification job
+     * @param restTemplate              the rest template
+     */
     public JobActor(@Qualifier("subscribedNotificationJob") JobWorker subscribedNotificationJob,
                     @Qualifier("welcomeNotificationJob") JobWorker welcomeNotificationJob,
                     @Qualifier("restTemplate") RestTemplate restTemplate) {

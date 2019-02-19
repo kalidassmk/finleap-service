@@ -13,8 +13,11 @@ import java.sql.Date;
 @Entity
 @Table(name = "JOB_QUEUE")
 public class JobQueue {
-	
-	public static final String JOB_QUEUE_STATUS_NEW = "NEW";
+
+    /**
+     * The constant JOB_QUEUE_STATUS_NEW.
+     */
+    public static final String JOB_QUEUE_STATUS_NEW = "NEW";
 
 	@Id
 	private String id ;
@@ -38,67 +41,147 @@ public class JobQueue {
 	@Column(name = "JOB_ID")
 	private String jobId;
 
-	public String getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(String id) {
 		this.id = id;
 	}
 
-	public String getStatus() {
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
+    public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public Date getCreatedOn() {
+    /**
+     * Gets created on.
+     *
+     * @return the created on
+     */
+    public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(Date createdOn) {
+    /**
+     * Sets created on.
+     *
+     * @param createdOn the created on
+     */
+    public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	public Date getCompletedOn() {
+    /**
+     * Gets completed on.
+     *
+     * @return the completed on
+     */
+    public Date getCompletedOn() {
 		return completedOn;
 	}
 
-	public void setCompletedOn(Date completedOn) {
+    /**
+     * Sets completed on.
+     *
+     * @param completedOn the completed on
+     */
+    public void setCompletedOn(Date completedOn) {
 		this.completedOn = completedOn;
 	}
 
-	public String getInstanceName() {
+    /**
+     * Gets instance name.
+     *
+     * @return the instance name
+     */
+    public String getInstanceName() {
 		return instanceName;
 	}
 
-	public void setInstanceName(String instanceName) {
+    /**
+     * Sets instance name.
+     *
+     * @param instanceName the instance name
+     */
+    public void setInstanceName(String instanceName) {
 		this.instanceName = instanceName;
 	}
 
-	public String getJobName() {
+    /**
+     * Gets job name.
+     *
+     * @return the job name
+     */
+    public String getJobName() {
 		return jobName;
 	}
 
-	public void setJobName(String jobName) {
+    /**
+     * Sets job name.
+     *
+     * @param jobName the job name
+     */
+    public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
 
-	public String getJobType() {
+    /**
+     * Gets job type.
+     *
+     * @return the job type
+     */
+    public String getJobType() {
 		return jobType;
 	}
 
-	public void setJobType(String jobType) {
+    /**
+     * Sets job type.
+     *
+     * @param jobType the job type
+     */
+    public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
 
-	public String getJobId() {
+    /**
+     * Gets job id.
+     *
+     * @return the job id
+     */
+    public String getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(String jobId) {
+    /**
+     * Sets job id.
+     *
+     * @param jobId the job id
+     */
+    public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 }

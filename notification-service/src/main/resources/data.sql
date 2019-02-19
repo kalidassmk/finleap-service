@@ -1,9 +1,9 @@
 --Scheduler data
 insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
-  values('1','dailyScheduler','Subscribed News Letter','daily','23:03','NEW',1,0,0);
+  values('1','dailyScheduler','Subscribed News Letter','daily','09:05','NEW',1,0,0);
 
 insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
-  values('2','minuteScheduler','New User Welcome Notification','minute','16:16','NEW',5,0,0);
+  values('2','minuteScheduler','New User Welcome Notification','minute','09:00','NEW',5,5,0);
 
 -- Job
 insert into job (ID,JOB_NAME,TRIGGERED_BY,JOB_TYPE,STATUS,LAST_RUN_ON,SCHEDULE_ID)
