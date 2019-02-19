@@ -5,7 +5,10 @@ import akka.actor.ActorSystem;
 import akka.actor.UntypedActor;
 import com.finleap.notification.entity.JobQueue;
 import com.finleap.notification.repository.JobRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -26,7 +29,11 @@ public class JobQueueActor extends UntypedActor {
 
     public static Map<ActorRef, String> statusMap = new HashMap<>();
 
-    int jobActorCount = 5;
+    @Value("${job.actor.count}")
+    int jobActorCount;
+
+    private final Logger logger = LoggerFactory.getLogger(JobQueueActor.class);
+
 
     public JobQueueActor(JobRepo jobRepo) {
         this.jobRepo = jobRepo;
@@ -39,12 +46,12 @@ public class JobQueueActor extends UntypedActor {
             ActorRef jobActor = system.actorOf(SPRING_EXTENSION_PROVIDER.get(system).props("jobActor"), "jobActor-" + i);
             statusMap.put(jobActor, "ready");
         }
-
+        logger.info("jobActor created, count {} ..............", jobActorCount);
     }
 
     @Override
     public void onReceive(Object arg0) {
-        System.out.println("Job Queue ..................................");
+        logger.info("Job Queue ..................................");
         JobQueue jobQueue = jobRepo.getJobQueue();
         if (jobQueue != null) {
             ActorRef actorRef = anyReadyActor();
@@ -52,7 +59,7 @@ public class JobQueueActor extends UntypedActor {
                 actorRef.tell(jobQueue, null);
                 statusMap.put(actorRef, "busy");
             } else {
-                System.out.println("All Workers are busy..............");
+                logger.info("All Workers are busy..............");
             }
         }
     }

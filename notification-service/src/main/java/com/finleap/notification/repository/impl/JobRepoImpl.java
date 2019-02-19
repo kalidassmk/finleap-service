@@ -3,6 +3,8 @@ package com.finleap.notification.repository.impl;
 import com.finleap.notification.entity.Job;
 import com.finleap.notification.entity.JobQueue;
 import com.finleap.notification.repository.JobRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -29,6 +31,12 @@ public class JobRepoImpl implements JobRepo {
 
     private static final String UPDATE_JOB_QUEUE = "UPDATE JOB_QUEUE SET STATUS = ? WHERE id = ?";
 
+    private static final  String CREATE_JOB_QUEUE = "INSERT INTO JOB_QUEUE (ID, JOB_NAME,JOB_TYPE,JOB_ID,STATUS,CREATED_ON) VALUES (?, ?, ?,?,?,?)";
+
+
+    private final Logger logger = LoggerFactory.getLogger(JobRepoImpl.class);
+
+
     /**
      * The Named parameter jdbc template.
      */
@@ -47,6 +55,7 @@ public class JobRepoImpl implements JobRepo {
 
     @Override
     public Job getJobByScheduleId(String scheduleId) {
+        logger.info("Get the JobBy ScheduleId {} ", scheduleId);
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("scheduleId", scheduleId);
         List<Job> job = namedParameterJdbcTemplate.query(JOB_BY_SCHEDULE_ID, namedParameters, new JobRowMapper());
         return job != null && !job.isEmpty() ? job.get(0) : null;
@@ -54,23 +63,28 @@ public class JobRepoImpl implements JobRepo {
 
     @Override
     public void createJobQueue(JobQueue jobQueue) {
-        String sql = "INSERT INTO JOB_QUEUE (ID, JOB_NAME,JOB_TYPE,JOB_ID,STATUS,CREATED_ON) VALUES (?, ?, ?,?,?,?)";
-        int count = jdbcTemplate.update(sql, new Object[]{jobQueue.getId(),
-                jobQueue.getJobName(), jobQueue.getJobType(), jobQueue.getJobId(),jobQueue.getStatus(),jobQueue.getCreatedOn()
+        logger.info("Create Job Queue {} ", jobQueue.toString());
+        int count = jdbcTemplate.update(CREATE_JOB_QUEUE, new Object[]{jobQueue.getId(),
+                jobQueue.getJobName(), jobQueue.getJobType(), jobQueue.getJobId(), jobQueue.getStatus(), jobQueue.getCreatedOn()
         });
-
-        System.out.println("count = " + count);
+        logger.info("created {} ", count > 0 ? true : false);
     }
 
 
     @Override
     public JobQueue getJobQueue() {
+
+
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("status", "NEW");
         List<JobQueue> jobQueuesList = namedParameterJdbcTemplate.query("SELECT * FROM job_queue where STATUS = :status", namedParameters, new JobQueueRowMapper());
         JobQueue jobQueues = jobQueuesList != null && !jobQueuesList.isEmpty() ? jobQueuesList.get(0) : null;
-        if(jobQueues!=null){
+        if (jobQueues != null) {
+            logger.info("Get the Job Queue {} ", jobQueues.toString());
             updateJobQueue("INPROGRESS", jobQueues.getId());
+            logger.info("update the Job Queue status {} ", "INPROGRESS");
+
         }
+
         return jobQueues;
     }
 
@@ -81,7 +95,7 @@ public class JobRepoImpl implements JobRepo {
         // define SQL types of the arguments
         int[] types = {Types.VARCHAR, Types.BIGINT};
         int rows = jdbcTemplate.update(UPDATE_JOB_QUEUE, params, types);
-        System.out.println(rows + " row(s) updated.");
+        logger.info(rows + " row(s) updated.");
 
     }
 

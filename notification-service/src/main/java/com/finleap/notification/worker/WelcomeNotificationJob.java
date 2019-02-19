@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 @Qualifier("welcomeNotificationJob")
 @PropertySource("classpath:application.properties")
 public class WelcomeNotificationJob extends JobWorker {
+
+
     @Override
     public void execute(NotificationTemplate notificationTemplate) {
         List<User> allUserData = getAllUserData();
