@@ -9,6 +9,8 @@
         * newsletter is loaded by template service and enriched with user-data of all subscribed users
         * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
 
+----------------------------------------------------------------------------------------------------
+# How to run?
 
 
 ----------------------------------------------------------------------------------------------
@@ -105,7 +107,6 @@
       ## com.finleap.notification.worker.WelcomeNotificationJob .java
 
 
-## How to run?
 
 
 ## Configuration
