@@ -1,3 +1,29 @@
+### notification-service Challenge: Multi API notification service
+
+    Folder **src/resources/** contains data.sql files for Database tables details and information .
+
+
+   ## Notification-Service can be triggered in two use-cases:
+      # use-case one: assume a new user is created
+        * user data is loaded by user-service
+        * welcome template is loaded by template service and enriched with user-data
+        * once template is enriched with data it is sent directly to imaginary mail-service
+
+      # use-case two: asume newsletter hast to be sent:
+        * newsletter is loaded by template service and enriched with user-data of all subscribed users
+        * enriched newsletter messages are sent as a batch of at least 10 to imaginary mail service
+
+
+### Technical Implementation :
+      ## com.finleap.notification.worker.WelcomeNotificationJob .java
+
+
+
+## How to run?
+
+
+
+
 ## Configuration
 
 ### Configuration Files
