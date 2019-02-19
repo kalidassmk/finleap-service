@@ -95,12 +95,11 @@
                         * It will get the new user data from user service and get Welcome User Template(welcome template)
                              from template service then  enrich the both data and send to mail service
 
-     3) Job_Queue
+     3) Job_Queue - SchedulerActor will create the job queue based on the job which has mapped
              # JobQueue Actor will lookup every 10 seconds in the "JOB_QUEUE" TABLE
                 if any NEW job queue has created, if created will trigger the job actor to execute
                 the appropriate job ex.. SubscribedNotificationJob , WelcomeNotificationJob.
              # Job Actor will assign the job worker to execute the task.
-
 
 ### Technical Implementation :
       ## com.finleap.notification.worker.WelcomeNotificationJob .java
