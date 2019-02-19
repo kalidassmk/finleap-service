@@ -15,11 +15,10 @@
 
 ----------------------------------------------------------------------------------------------------
   # Database Tables :
-      ## 1) scheduler
-       --------------
-            # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
-              values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0);
 
+    ## 1) scheduler
+       # insert into scheduler (id,name,description,frequency,time,status,frequency_value,delay,next_run)
+              values('2','minuteScheduler','New User Welcome Notification','minute','23:00','NEW',5,0,0);
                  # Scheduler name : minuteScheduler
                     * It will run every five minutes and will trigger the WelcomeNotificationJob
                     (based on the frequency_value= "5",  we can adjust the frequency )
